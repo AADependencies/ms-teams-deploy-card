@@ -1,6 +1,6 @@
 {
   "name": "ms-teams-deploy-card",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Microsoft Teams Deploy Card",
   "main": "index.ts",
   "repository": "https://github.com/AADependencies/ms-teams-deploy-card",
@@ -10,9 +10,9 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@octokit/rest": "^16.43.1",
-    "moment-timezone": "^0.5.27",
-    "node-fetch": "^2.6.0",
-    "yaml": "^1.10.0"
+    "moment-timezone": "^0.5.43",
+    "node-fetch": "^2.6.11",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@types/moment-timezone": "^0.5.12",
