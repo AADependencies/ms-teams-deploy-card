@@ -1,14 +1,14 @@
 {
   "name": "ms-teams-deploy-card",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Microsoft Teams Deploy Card",
   "main": "index.ts",
   "repository": "https://github.com/toko-bifrost/ms-teams-deploy-card",
-  "author": "Aldwyn Cabarrubias",
+  "author": "aagent",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@actions/core": "^1.2.2",
+    "@actions/core": "^1.10.0",
     "@octokit/rest": "^16.43.1",
     "moment-timezone": "^0.5.27",
     "node-fetch": "^2.6.0",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@types/moment-timezone": "^0.5.12",
     "@types/node-fetch": "^2.5.4",
-    "@zeit/ncc": "^0.21.0",
+    "@vercel/ncc": "^0.36.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
