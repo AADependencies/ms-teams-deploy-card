@@ -1,9 +1,9 @@
 {
   "name": "ms-teams-deploy-card",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Microsoft Teams Deploy Card",
   "main": "index.ts",
-  "repository": "https://github.com/toko-bifrost/ms-teams-deploy-card",
+  "repository": "https://github.com/AADependencies/ms-teams-deploy-card",
   "author": "aagent",
   "license": "MIT",
   "private": false,
