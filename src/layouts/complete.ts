@@ -1,4 +1,3 @@
-import { Octokit } from "@octokit/rest";
 import { getInput, warning, info } from "@actions/core";
 import yaml from "yaml";
 
@@ -7,7 +6,7 @@ import { Fact, PotentialAction } from "../models";
 import { formatCozyLayout } from "./cozy";
 
 export function formatFilesToDisplay(
-  files: Octokit.ReposGetCommitResponseFilesItem[],
+  files: any[],
   allowedLength: number,
   htmlUrl: string
 ) {
@@ -35,7 +34,7 @@ export function formatFilesToDisplay(
 }
 
 export function formatCompleteLayout(
-  commit: Octokit.Response<Octokit.ReposGetCommitResponse>,
+  commit: any,
   conclusion: string,
   elapsedSeconds?: number
 ) {

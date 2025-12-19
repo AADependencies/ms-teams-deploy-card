@@ -12,6 +12,7 @@ import { CONCLUSION_THEMES } from "./constants";
 
 export function escapeMarkdownTokens(text: string) {
   return text
+    .replace(/\\/g, "\\\\")
     .replace(/\n\ {1,}/g, "\n ")
     .replace(/\_/g, "\\_")
     .replace(/\*/g, "\\*")
@@ -97,13 +98,13 @@ export async function getWorkflowRunStatus() {
   });
 
   const job = workflowJobs.data.jobs.find(
-    (job: Octokit.ActionsListJobsForWorkflowRunResponseJobsItem) =>
+    (job: any) =>
       job.name === process.env.GITHUB_JOB
   );
 
   let lastStep;
-  const stoppedStep = job?.steps.find(
-    (step: Octokit.ActionsListJobsForWorkflowRunResponseJobsItemStepsItem) =>
+  const stoppedStep = job?.steps?.find(
+    (step: any) =>
       step.conclusion === "failure" ||
       step.conclusion === "timed_out" ||
       step.conclusion === "cancelled" ||
@@ -114,10 +115,10 @@ export async function getWorkflowRunStatus() {
     lastStep = stoppedStep;
   } else {
     lastStep = job?.steps
-      .reverse()
+      ?.reverse()
       .find(
         (
-          step: Octokit.ActionsListJobsForWorkflowRunResponseJobsItemStepsItem
+          step: any
         ) => step.status === "completed"
       );
   }

@@ -9,5 +9,5 @@ try {
     info("Configured to not show card upon job start.");
   }
 } catch (error) {
-  setFailed(error.message);
+  setFailed(error instanceof Error ? error.message : String(error));
 }
