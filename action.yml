@@ -1,3 +1,4 @@
+---
 name: Microsoft Teams Deploy Card
 author: Project Toko Bifrost
 description: Notify your Teams channel with a beautiful, comprehensive deployment card
@@ -15,7 +16,7 @@ inputs:
   environment:
     description: Name of the environment (won't be included in the card if none)
     required: false
-    default: null
+    default: ''
   timezone:
     description: Timezone for notification
     required: false
@@ -31,27 +32,27 @@ inputs:
   show-on-start:
     description: Show the MS Teams card upon starting this Github Actions job
     required: false
-    default: true
+    default: 'true'
   show-on-exit:
     description: Show the MS Teams card upon exiting this Github Actions job
     required: false
-    default: false
+    default: 'false'
   show-on-failure:
     description: Show the MS Teams card upon failure only of this Github Actions job
     required: false
-    default: false
+    default: 'false'
   custom-facts:
     description: YAML-parseable multiline string defining the list of object with name and value to display on the facts table
     required: false
-    default: null
+    default: ''
   enable-view-status-action:
     description: Enable an action to view the deployment status
     required: false
-    default: true
+    default: 'true'
   enable-review-diffs-action:
     description: Enable an action to review commit diffs
     required: false
-    default: true
+    default: 'true'
   view-status-action-text:
     description: Customize action text in viewing the deployment status
     required: false
@@ -63,15 +64,15 @@ inputs:
   custom-actions:
     description: Add more actions and links on cozy and complete layout
     required: false
-    default: null
+    default: ''
   include-files:
     description: Only for complete layout; Set false to exclude list of files
     required: false
-    default: true
+    default: 'true'
   allowed-file-len:
     description: Allowed number of files to display
     required: false
-    default: 7
+    default: '7'
 
 runs:
   using: node16
