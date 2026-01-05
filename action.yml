@@ -8,69 +8,69 @@ branding:
 
 inputs:
   webhook-uri:
-    description: Microsoft Teams webhook URI
+    description: 'Microsoft Teams webhook URI'
     required: true
   github-token:
-    description: Github token
+    description: 'Github token'
     required: true
   environment:
-    description: Name of the environment (won't be included in the card if none)
+    description: 'Name of the environment (won't be included in the card if none)'
     required: false
     default: ''
   timezone:
-    description: Timezone for notification
+    description: 'Timezone for notification'
     required: false
-    default: UTC
+    default: 'UTC'
   card-layout-start:
-    description: Card layout on start (i.e. "complete", "cozy", "compact")
+    description: 'Card layout on start (i.e. "complete", "cozy", "compact")'
     required: false
-    default: complete
+    default: 'complete'
   card-layout-exit:
-    description: Card layout on end (i.e. "complete", "cozy", "compact")
+    description: 'Card layout on end (i.e. "complete", "cozy", "compact")'
     required: false
-    default: compact
+    default: 'compact'
   show-on-start:
-    description: Show the MS Teams card upon starting this Github Actions job
+    description: 'Show the MS Teams card upon starting this Github Actions job'
     required: false
     default: 'true'
   show-on-exit:
-    description: Show the MS Teams card upon exiting this Github Actions job
+    description: 'Show the MS Teams card upon exiting this Github Actions job'
     required: false
     default: 'false'
   show-on-failure:
-    description: Show the MS Teams card upon failure only of this Github Actions job
+    description: 'Show the MS Teams card upon failure only of this Github Actions job'
     required: false
     default: 'false'
   custom-facts:
-    description: YAML-parseable multiline string defining the list of object with name and value to display on the facts table
+    description: 'YAML-parseable multiline string defining the list of object with name and value to display on the facts table'
     required: false
     default: ''
   enable-view-status-action:
-    description: Enable an action to view the deployment status
+    description: 'Enable an action to view the deployment status'
     required: false
     default: 'true'
   enable-review-diffs-action:
-    description: Enable an action to review commit diffs
+    description: 'Enable an action to review commit diffs'
     required: false
     default: 'true'
   view-status-action-text:
-    description: Customize action text in viewing the deployment status
+    description: 'Customize action text in viewing the deployment status'
     required: false
-    default: View build/deploy status
+    default: 'View build/deploy status'
   review-diffs-action-text:
-    description: Customize action text in reviewing commit diffs
+    description: 'Customize action text in reviewing commit diffs'
     required: false
-    default: Review commit diffs
+    default: 'Review commit diffs'
   custom-actions:
-    description: Add more actions and links on cozy and complete layout
+    description: 'Add more actions and links on cozy and complete layout'
     required: false
     default: ''
   include-files:
-    description: Only for complete layout; Set false to exclude list of files
+    description: 'Only for complete layout; Set false to exclude list of files'
     required: false
     default: 'true'
   allowed-file-len:
-    description: Allowed number of files to display
+    description: 'Allowed number of files to display'
     required: false
     default: '7'
 
