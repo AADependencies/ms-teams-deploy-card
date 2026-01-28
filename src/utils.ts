@@ -64,7 +64,11 @@ export function submitNotification(webhookBody: WebhookBody) {
       info(webhookBodyJson);
       return response;
     })
-    .catch(console.error);
+    .catch((error) => {
+      // Avoid exposing sensitive information in error messages
+      warning("Failed to send notification to Microsoft Teams webhook");
+      throw error;
+    });
 }
 
 export async function formatAndNotify(
