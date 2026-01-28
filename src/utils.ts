@@ -11,15 +11,17 @@ import { formatCompleteLayout } from "./layouts/complete";
 import { CONCLUSION_THEMES } from "./constants";
 
 export function escapeMarkdownTokens(text: string) {
+  // Use global flag (/g) in all regex patterns to replace ALL occurrences,
+  // not just the first one. This ensures complete string escaping.
   return text
-    .replace(/\\/g, "\\\\")
-    .replace(/\n\ {1,}/g, "\n ")
-    .replace(/\_/g, "\\_")
-    .replace(/\*/g, "\\*")
-    .replace(/\|/g, "\\|")
-    .replace(/#/g, "\\#")
-    .replace(/-/g, "\\-")
-    .replace(/>/g, "\\>");
+    .replace(/\\/g, "\\\\")     // Escape all backslashes
+    .replace(/\n\ {1,}/g, "\n ")  // Normalize newlines with spaces
+    .replace(/\_/g, "\\_")      // Escape all underscores
+    .replace(/\*/g, "\\*")      // Escape all asterisks
+    .replace(/\|/g, "\\|")      // Escape all pipes
+    .replace(/#/g, "\\#")       // Escape all hashes
+    .replace(/-/g, "\\-")       // Escape all hyphens
+    .replace(/>/g, "\\>");      // Escape all greater-than signs
 }
 
 export function getRunInformation() {
