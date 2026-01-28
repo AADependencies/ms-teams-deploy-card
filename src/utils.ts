@@ -84,7 +84,7 @@ export async function formatAndNotify(
     webhookBody = formatCompleteLayout(commit, conclusion, elapsedSeconds);
   }
 
-  submitNotification(webhookBody);
+  await submitNotification(webhookBody);
 }
 
 export async function getWorkflowRunStatus() {

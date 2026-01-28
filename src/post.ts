@@ -1,9 +1,11 @@
 import { setFailed, info, getInput } from "@actions/core";
 import { formatAndNotify, getWorkflowRunStatus } from "./utils";
 
-try {
-  // setTimeout to give time for Github API to show up the final conclusion
-  setTimeout(async () => {
+async function run() {
+  try {
+    // setTimeout to give time for Github API to show up the final conclusion
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    
     const showCardOnExit = getInput(`show-on-exit`).toLowerCase() === "true";
     const showCardOnFailure =
       getInput(`show-on-failure`).toLowerCase() === "true";
@@ -13,7 +15,7 @@ try {
       (showCardOnExit && !showCardOnFailure) ||
       (showCardOnFailure && workflowRunStatus.conclusion !== "success")
     ) {
-      formatAndNotify(
+      await formatAndNotify(
         "exit",
         workflowRunStatus.conclusion || "unknown",
         workflowRunStatus.elapsedSeconds
@@ -21,7 +23,9 @@ try {
     } else {
       info("Configured to not show card upon job exit.");
     }
-  }, 2000);
-} catch (error) {
-  setFailed(error instanceof Error ? error.message : String(error));
+  } catch (error) {
+    setFailed(error instanceof Error ? error.message : String(error));
+  }
 }
+
+run();
