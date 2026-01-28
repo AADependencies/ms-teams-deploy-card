@@ -28,4 +28,7 @@ async function run() {
   }
 }
 
-run();
+run().catch((error) => {
+  setFailed(error instanceof Error ? error.message : String(error));
+  process.exit(1);
+});
