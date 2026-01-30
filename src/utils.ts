@@ -11,15 +11,17 @@ import { formatCompleteLayout } from "./layouts/complete";
 import { CONCLUSION_THEMES } from "./constants";
 
 export function escapeMarkdownTokens(text: string) {
+  // Use global flag (/g) in all regex patterns to replace ALL occurrences,
+  // not just the first one. This ensures complete string escaping.
   return text
-    .replace(/\\/g, "\\\\")
-    .replace(/\n\ {1,}/g, "\n ")
-    .replace(/\_/g, "\\_")
-    .replace(/\*/g, "\\*")
-    .replace(/\|/g, "\\|")
-    .replace(/#/g, "\\#")
-    .replace(/-/g, "\\-")
-    .replace(/>/g, "\\>");
+    .replace(/\\/g, "\\\\")     // Escape all backslashes
+    .replace(/\n\ {1,}/g, "\n ")  // Normalize newlines with spaces
+    .replace(/\_/g, "\\_")      // Escape all underscores
+    .replace(/\*/g, "\\*")      // Escape all asterisks
+    .replace(/\|/g, "\\|")      // Escape all pipes
+    .replace(/#/g, "\\#")       // Escape all hashes
+    .replace(/-/g, "\\-")       // Escape all hyphens
+    .replace(/>/g, "\\>");      // Escape all greater-than signs
 }
 
 export function getRunInformation() {
@@ -64,7 +66,11 @@ export function submitNotification(webhookBody: WebhookBody) {
       info(webhookBodyJson);
       return response;
     })
-    .catch(console.error);
+    .catch((error) => {
+      // Avoid exposing sensitive information in error messages
+      warning("Failed to send notification to Microsoft Teams webhook");
+      throw error;
+    });
 }
 
 export async function formatAndNotify(
@@ -84,7 +90,7 @@ export async function formatAndNotify(
     webhookBody = formatCompleteLayout(commit, conclusion, elapsedSeconds);
   }
 
-  submitNotification(webhookBody);
+  await submitNotification(webhookBody);
 }
 
 export async function getWorkflowRunStatus() {
